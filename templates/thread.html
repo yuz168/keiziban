@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ thread.title }} - 掲示板</title>
+</head>
+<body>
+    <h1>{{ thread.title }}</h1>
+    <p>作成日時: {{ thread.created_at }}</p>
+
+    <h2>コメント</h2>
+    <ul>
+        {% for comment in comments %}
+            <li>{{ comment.name }} ({{ comment.created_at }}): {{ comment.body }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>コメントを投稿</h2>
+    <form method="POST">
+        <div>
+            <label for="name">名前:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="body">コメント:</label>
+            <textarea id="body" name="body" required></textarea>
+        </div>
+        <button type="submit">投稿</button>
+    </form>
+    <p><a href="{{ url_for('index') }}">トップページに戻る</a></p>
+</body>
+</html>
