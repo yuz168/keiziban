@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>掲示板</title>
+</head>
+<body>
+    <h1>掲示板</h1>
+    <p><a href="{{ url_for('new_thread') }}">新しいスレッドを作成</a></p>
+    <ul>
+        {% for thread in threads %}
+            <li><a href="{{ url_for('view_thread', thread_id=thread.id) }}">{{ thread.title }}</a> ({{ thread.created_at }})</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
