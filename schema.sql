@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS threads;
+CREATE TABLE threads (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title TEXT NOT NULL,
+    created_at DATETIME NOT NULL
+);
+
+DROP TABLE IF EXISTS comments;
+CREATE TABLE comments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    thread_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    body TEXT NOT NULL,
+    created_at DATETIME NOT NULL,
+    FOREIGN KEY (thread_id) REFERENCES threads (id)
+);
